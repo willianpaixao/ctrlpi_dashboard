@@ -1,44 +1,69 @@
 {% extends "foundation/base.html" %}
+
+{% block title %}CTRLPi Dashboard{% endblock title %}
+
 {% block base_body %}
 	<div class="row">
 		<div class="large-3 columns">
 			<center><img src="http://placehold.it/100x100&text=logo"/></center>
 		</div>
 		<div class="large-6 columns">
-			<h3>CTRLPi Dashborad</h3>
+			<h3>CTRLPi Dashboard</h3>
 		</div>
 		<div class="large-3 columns">
 			<ul class="inline-list right">
-				<li><a href="#">Link 1</a></li></br>
-				<li><a href="#">Link 2</a></li></br>
+				<li><a href="#">Preferences</a></li></br>
+				<li><a href="#">Sign out</a></li></br>
 			</ul>
 		</div>
 	</div>
 
 	<div class="row"> 
-		<div class="large-9 push-3 columns">
+		<div class="large-10 push-2 columns">
 			<div class="row">
+				<div class="large-1 columns">
+					<center><p>id</p></center>
+				</div>
 				<div class="large-5 columns">
-					<center><p>name. description.</p></center>
-					<p>client 1. location one.</p>
+					<center><p>description</p></center>
 				</div>
 				<div class="large-2 columns">
-					<center><p>status.</p></center>
-					<center><img src="http://placehold.it/15/0f0"/></center>
+                                        <center><p>status</p></center>
 				</div>
-				<div class="large-2 columns">
-					<center><p>uptime.</p></center>
-					<center><p>2d</p></center>
+				<div class="large-1 columns">
+					<center><p>uptime</p></center>
 				</div>
 				<div class="large-3 columns">
-					<center><p>task.</p></center>
-					<center><p>commercial jul2014</p></center>
+					<center><p>task</p></center>
 				</div>
+			</div>
+			<div class="row">
+                                {% for n in node %}
+				<div class="large-1 columns">
+                                        <spam>{{ n.id }}</spam>
+				</div>
+				<div class="large-5 columns">
+                                        <spam>{{ n.name }}</spam>
+				</div>
+				<div class="large-2 columns">
+                                        {% if n.ping %}
+                                        <center><img src="http://placehold.it/15/0f0"/></center>
+                                        {% else %}
+                                        <center><img src="http://placehold.it/15/f00"/></center>
+                                        {% endif %}
+				</div>
+				<div class="large-1 columns">
+                                        <spam>{{ n.uptime }}</spam>
+				</div>
+				<div class="large-3 columns">
+                                        <spam>{{ n.task }}</spam>
+				</div>
+                                {% endfor %}
 			</div>
 		</div>
 
 		<!-- /begin Sidebar -->
-		<div class="large-3 pull-9 columns">
+		<div class="large-2 pull-10 columns">
 			<ul class="side-nav">
 				<li><a href="#">Link 1</a></li>
 				<li><a href="#">Link 2</a></li>
