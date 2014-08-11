@@ -43,7 +43,22 @@
 	<div class="row"> 
 		<div class="large-10 push-2 columns">
 			<div class="row">
-                            {{ node.id }}
+                            <p> id = {{ node.id }}</p>
+                            <p> ping = {{ node.ping }}</p>
+                            <p> name = {{ node.name }}</p>
+                            <p> address = {{ node.address }}</p>
+                            <p> port = {{ node.port }}</p>
+                            <p> mac = {{ node.mac }}</p>
+                            <p> description = {{ node.description }}</p>
+                            <p> admin = {{ node.admin }}</p>
+                            <p> cpu_load = {{ node.cpu_load }}</p>
+                            <p> mem_usage = {{ node.mem_usage }}</p>
+                            <form id="reboot" action="." method="POST">
+                                <input id="submit" type="button" value="Reboot" />
+                            </form>
+                            <form id="shutdown" action="." method="POST">
+                                <input id="submit" type="button" value="Shutdown" />
+                            </form>
 			</div>
 		</div>
 	<div class="row"> 
@@ -63,3 +78,21 @@
 		</div>
 	</div><!-- /end Sidebar -->
 {% endblock %}
+
+{% block body_js %}
+<script>
+        $(document).ready(function() {
+                $("#reboot").click(function(){
+                        $.ajax({url:"#", success:function(result){
+                                console.log("reboot");
+                        }});
+                });
+
+                $("#shutdown").click(function(){
+                        $.ajax({url:"#", success:function(result){
+                                console.log("shutdown");
+                        }});
+                });
+        });
+</script>
+{% endblock body_js %}
